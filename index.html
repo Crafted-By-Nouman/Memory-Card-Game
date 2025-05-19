@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Cards Game</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+      <div class="container">
+        <div class="logo">
+          <i class="fas fa-brain"></i>
+          <h1 class="title">Memory Cards</h1>
+        </div>
+        <div class="buttons">
+          <button id="single-player-btn" class="game-btn">
+            <i class="fas fa-user"></i> Single Player
+          </button>
+          <button id="two-player-btn" class="game-btn">
+            <i class="fas fa-users"></i> Two Player
+          </button>
+          <button id="how-to-play-btn" class="game-btn secondary-btn">
+            <i class="fas fa-question-circle"></i> How to Play
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Single Player Game Page -->
+    <div id="single-player-page" class="page">
+      <div class="game-header">
+        <div class="game-info">
+          <div>
+            <i class="fas fa-trophy"></i> Level:
+            <span id="current-level">1</span>
+          </div>
+          <div>
+            <i class="fas fa-route"></i> Moves Left:
+            <span id="moves-left">8</span>
+          </div>
+          <div>
+            <i class="fas fa-star"></i> Score: <span id="current-score">0</span>
+          </div>
+        </div>
+        <div class="game-controls">
+          <button id="sp-pause-btn" class="control-btn">
+            <i class="fas fa-pause"></i>
+          </button>
+          <button id="sp-reset-btn" class="control-btn">
+            <i class="fas fa-redo"></i>
+          </button>
+          <button id="sp-home-btn" class="control-btn">
+            <i class="fas fa-home"></i>
+          </button>
+        </div>
+      </div>
+      <div class="progress-container">
+        <div id="level-progress" class="progress-bar"></div>
+      </div>
+      <div id="sp-game-board" class="game-board"></div>
+    </div>
+
+    <!-- Two Player Game Page -->
+    <div id="two-player-page" class="page">
+      <div class="game-header">
+        <div class="game-info">
+          <div>
+            <i class="fas fa-user"></i> Player
+            <span id="current-player">1</span>'s Turn
+          </div>
+          <div>
+            <i class="fas fa-user"></i> Player 1:
+            <span id="player1-score">0</span> pairs
+          </div>
+          <div>
+            <i class="fas fa-user"></i> Player 2:
+            <span id="player2-score">0</span> pairs
+          </div>
+        </div>
+        <div class="game-controls">
+          <button id="tp-reset-btn" class="control-btn">
+            <i class="fas fa-redo"></i>
+          </button>
+          <button id="tp-home-btn" class="control-btn">
+            <i class="fas fa-home"></i>
+          </button>
+        </div>
+      </div>
+      <div id="tp-game-board" class="game-board"></div>
+    </div>
+
+    <!-- Game Over Page -->
+    <div id="game-over-page" class="page">
+      <div class="container">
+        <div class="logo">
+          <i class="fas fa-trophy"></i>
+          <h1 class="title">Game Over</h1>
+        </div>
+        <div id="game-results">
+          <div id="result-message"></div>
+          <div id="level-reached"></div>
+          <div id="score-achieved"></div>
+          <div id="moves-used"></div>
+          <div id="winner-display"></div>
+          <div id="high-score-message"></div>
+        </div>
+        <div class="buttons">
+          <button id="play-again-btn" class="game-btn">
+            <i class="fas fa-redo"></i> Play Again
+          </button>
+          <button id="go-home-btn" class="game-btn">
+            <i class="fas fa-home"></i> Go to Home
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pause Modal -->
+    <div id="pause-modal" class="modal">
+      <div class="modal-content">
+        <h2><i class="fas fa-pause"></i> Game Paused</h2>
+        <button id="resume-btn" class="modal-btn">
+          <i class="fas fa-play"></i> Resume
+        </button>
+        <button id="quit-btn" class="modal-btn">
+          <i class="fas fa-sign-out-alt"></i> Quit
+        </button>
+      </div>
+    </div>
+
+    <!-- How to Play Modal -->
+    <div id="how-to-play-modal" class="modal">
+      <div class="modal-content">
+        <h2><i class="fas fa-question-circle"></i> How to Play</h2>
+        <div class="instructions">
+          <h3><i class="fas fa-gamepad"></i> Single Player Mode</h3>
+          <ul>
+            <li>
+              Match all pairs before running out of moves to advance to the next
+              level
+            </li>
+            <li>
+              Each level increases the number of cards and gives you more moves
+            </li>
+            <li>Complete matches quickly to earn bonus points</li>
+          </ul>
+
+          <h3><i class="fas fa-user-friends"></i> Two Player Mode</h3>
+          <ul>
+            <li>Take turns with another player to find matching pairs</li>
+            <li>When you find a match, you get another turn</li>
+            <li>The player with the most matches at the end wins</li>
+          </ul>
+
+          <h3><i class="fas fa-star"></i> Scoring</h3>
+          <ul>
+            <li>
+              Single Player: Score based on level reached and moves remaining
+            </li>
+            <li>Two Player: Each match is worth 1 point</li>
+          </ul>
+        </div>
+        <button id="close-instructions-btn" class="modal-btn">
+          <i class="fas fa-times"></i> Close
+        </button>
+      </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirm-modal" class="modal">
+      <div class="modal-content">
+        <h2 id="confirm-message"></h2>
+        <div class="confirm-buttons">
+          <button id="confirm-yes" class="modal-btn confirm-btn">
+            <i class="fas fa-check"></i> Yes
+          </button>
+          <button id="confirm-no" class="modal-btn cancel-btn">
+            <i class="fas fa-times"></i> No
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio
+      id="flip-sound"
+      src="https://assets.mixkit.co/sfx/preview/mixkit-card-flip-2030.mp3"
+      preload="auto"></audio>
+    <audio
+      id="match-sound"
+      src="https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-beep-221.mp3"
+      preload="auto"></audio>
+    <audio
+      id="win-sound"
+      src="https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3"
+      preload="auto"></audio>
+    <audio
+      id="lose-sound"
+      src="https://assets.mixkit.co/sfx/preview/mixkit-retro-arcade-lose-2027.mp3"
+      preload="auto"></audio>
+    <audio
+      id="level-up-sound"
+      src="https://assets.mixkit.co/sfx/preview/mixkit-unlock-game-notification-253.mp3"
+      preload="auto"></audio>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
