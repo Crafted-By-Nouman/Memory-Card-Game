@@ -37,5 +37,3 @@ Welcome to the **Memory Cards Game** – a fast, fun, and interactive brain-trai
 - **Vanilla JavaScript (ES6)** – Game logic, DOM interaction, and audio
 
 ---
-
-## 📂 Project Structure
